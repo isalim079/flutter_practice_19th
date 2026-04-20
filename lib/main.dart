@@ -32,7 +32,7 @@ class HomeActivity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.green,
         foregroundColor: Colors.white,
         title: const Text(
           'Inventory',
@@ -87,10 +87,14 @@ class HomeActivity extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
               margin: EdgeInsets.zero,
-              currentAccountPictureSize: Size.zero,
               decoration: BoxDecoration(color: Colors.green),
               accountName: Text('Code Red'),
               accountEmail: Text('codered@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://images.pexels.com/photos/33970120/pexels-photo-33970120.jpeg?_gl=1*14mraiu*_ga*MTgzOTg0NDk3OC4xNzc2Njc1Njk1*_ga_8JE65Q40S6*czE3NzY2NzU2OTQkbzEkZzEkdDE3NzY2NzU3MTQkajQwJGwwJGgw',
+                ),
+              ),
             ),
             ListTile(
               leading: Icon(Icons.home),
