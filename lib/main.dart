@@ -83,13 +83,38 @@ class HomeActivity extends StatelessWidget {
 
       drawer: Drawer(
         child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(child: Center(child: Text('Drawer Header'))),
-            ListTile(leading: Icon(Icons.home), title: Text('Home'), onTap: () {MySnackBar('Home drawer menu', context);}),
-            ListTile(leading: Icon(Icons.settings), title: Text('Settings'), onTap: () {MySnackBar('Settings drawer menu', context);}),
-            ListTile(leading: Icon(Icons.person), title: Text('Person'), onTap: () {MySnackBar('Person drawer menu', context);}),
+            UserAccountsDrawerHeader(
+              margin: EdgeInsets.zero,
+              currentAccountPictureSize: Size.zero,
+              decoration: BoxDecoration(color: Colors.green),
+              accountName: Text('Code Red'),
+              accountEmail: Text('codered@gmail.com'),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                MySnackBar('Home drawer menu', context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                MySnackBar('Settings drawer menu', context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Person'),
+              onTap: () {
+                MySnackBar('Person drawer menu', context);
+              },
+            ),
           ],
-        )
+        ),
       ),
 
       body: const Center(child: Text('Home')),
@@ -98,20 +123,23 @@ class HomeActivity extends StatelessWidget {
         currentIndex: 1,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Person'),
         ],
         onTap: (int index) {
-          if(index == 0) {
+          if (index == 0) {
             MySnackBar('Home bottom menu', context);
           }
-          if(index == 1) {
+          if (index == 1) {
             MySnackBar('Settings bottom menu', context);
           }
-          if(index == 2) {
+          if (index == 2) {
             MySnackBar('Person bottom menu', context);
           }
-        }
+        },
       ),
     );
   }
