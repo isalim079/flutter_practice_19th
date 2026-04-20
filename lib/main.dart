@@ -25,7 +25,7 @@ class HomeActivity extends StatelessWidget {
   MySnackBar(message, context) {
     return ScaffoldMessenger.of(
       context,
-    ).showSnackBar(SnackBar(content: message));
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -33,8 +33,9 @@ class HomeActivity extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
+        foregroundColor: Colors.white,
         title: const Text(
-          'Inventory App',
+          'Inventory',
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -47,23 +48,71 @@ class HomeActivity extends StatelessWidget {
         toolbarOpacity: 1,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              MySnackBar('Comments', context);
+            },
             icon: Icon(Icons.comment),
             color: Colors.white,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              MySnackBar('Person', context);
+            },
             icon: Icon(Icons.person),
             color: Colors.white,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              MySnackBar('Settings', context);
+            },
             icon: Icon(Icons.settings),
             color: Colors.white,
           ),
         ],
       ),
+
+      floatingActionButton: FloatingActionButton(
+        elevation: 4,
+        onPressed: () {
+          MySnackBar('Floating Action Button', context);
+        },
+        backgroundColor: Colors.green,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        child: Icon(Icons.check, color: Colors.white, size: 30),
+      ),
+
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(child: Center(child: Text('Drawer Header'))),
+            ListTile(leading: Icon(Icons.home), title: Text('Home'), onTap: () {MySnackBar('Home drawer menu', context);}),
+            ListTile(leading: Icon(Icons.settings), title: Text('Settings'), onTap: () {MySnackBar('Settings drawer menu', context);}),
+            ListTile(leading: Icon(Icons.person), title: Text('Person'), onTap: () {MySnackBar('Person drawer menu', context);}),
+          ],
+        )
+      ),
+
       body: const Center(child: Text('Home')),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Person'),
+        ],
+        onTap: (int index) {
+          if(index == 0) {
+            MySnackBar('Home bottom menu', context);
+          }
+          if(index == 1) {
+            MySnackBar('Settings bottom menu', context);
+          }
+          if(index == 2) {
+            MySnackBar('Person bottom menu', context);
+          }
+        }
+      ),
     );
   }
 }
